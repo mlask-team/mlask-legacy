@@ -1,0 +1,174 @@
+{
+  "version": 1,
+  "projects": {
+    "mlask-client": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/mlask-client",
+      "sourceRoot": "apps/mlask-client/src",
+      "prefix": "mlask-dev",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/mlask-client",
+            "index": "apps/mlask-client/src/index.html",
+            "main": "apps/mlask-client/src/main.ts",
+            "polyfills": "apps/mlask-client/src/polyfills.ts",
+            "tsConfig": "apps/mlask-client/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/mlask-client/src/favicon.ico",
+              "apps/mlask-client/src/assets"
+            ],
+            "styles": ["apps/mlask-client/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/mlask-client/src/environments/environment.ts",
+                  "with": "apps/mlask-client/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "mlask-client:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "mlask-client:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "mlask-client:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/mlask-client/tsconfig.app.json",
+              "apps/mlask-client/tsconfig.spec.json",
+              "apps/mlask-client/tsconfig.editor.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/mlask-client/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/mlask-client/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "mlask-client-e2e": {
+      "root": "apps/mlask-client-e2e",
+      "sourceRoot": "apps/mlask-client-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/mlask-client-e2e/cypress.json",
+            "tsConfig": "apps/mlask-client-e2e/tsconfig.e2e.json",
+            "devServerTarget": "mlask-client:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "mlask-client:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/mlask-client-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/mlask-client-e2e/**/*"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "mlask-client"
+}
