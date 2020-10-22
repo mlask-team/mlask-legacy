@@ -1,5 +1,5 @@
 {
-  "npmScope": "mlask-dev",
+  "npmScope": "mlsk",
   "affected": {
     "defaultBase": "master"
   },
@@ -29,6 +29,12 @@
     "mlask-client-e2e": {
       "tags": [],
       "implicitDependencies": ["mlask-client"]
+    },
+    "ui": {
+      "tags": []
+    },
+    "mlask-api": {
+      "tags": []
     }
   }
 }

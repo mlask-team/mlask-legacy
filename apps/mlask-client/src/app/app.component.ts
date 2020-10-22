@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'mlask-dev-root',
+  selector: 'mlsk-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

@@ -10,7 +10,7 @@
       },
       "root": "apps/mlask-client",
       "sourceRoot": "apps/mlask-client/src",
-      "prefix": "mlask-dev",
+      "prefix": "mlsk",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -62,7 +62,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "mlask-client:build"
+            "browserTarget": "mlask-client:build",
+            "proxyConfig": "apps/mlask-client/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -119,6 +120,90 @@
           "options": {
             "tsConfig": ["apps/mlask-client-e2e/tsconfig.e2e.json"],
             "exclude": ["**/node_modules/**", "!apps/mlask-client-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "ui": {
+      "projectType": "library",
+      "root": "libs/ui",
+      "sourceRoot": "libs/ui/src",
+      "prefix": "mlsk",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui/tsconfig.lib.json",
+              "libs/ui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ui/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "mlask-api": {
+      "root": "apps/mlask-api",
+      "sourceRoot": "apps/mlask-api/src",
+      "projectType": "application",
+      "prefix": "mlask-api",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/mlask-api",
+            "main": "apps/mlask-api/src/main.ts",
+            "tsConfig": "apps/mlask-api/tsconfig.app.json",
+            "assets": ["apps/mlask-api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/mlask-api/src/environments/environment.ts",
+                  "with": "apps/mlask-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "mlask-api:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/mlask-api/tsconfig.app.json",
+              "apps/mlask-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/mlask-api/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/mlask-api/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
