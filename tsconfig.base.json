@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@mlsk/ui": ["libs/ui/src/index.ts"]
+      "@mlsk/ui": ["libs/ui/src/index.ts"],
+      "@mlsk/api-models": ["libs/api-models/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,7 +1,7 @@
 {
   "npmScope": "mlsk",
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "main"
   },
   "implicitDependencies": {
     "angular.json": "*",
@@ -34,6 +34,9 @@
       "tags": []
     },
     "mlask-api": {
+      "tags": []
+    },
+    "api-models": {
       "tags": []
     }
   }

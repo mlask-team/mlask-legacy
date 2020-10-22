@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TabComponent } from './tab/tab.component';
+import { TodoComponent } from './todo/todo.component';
+
+const components = [
+  TodoComponent,
+];
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [TabComponent],
-  exports: [TabComponent],
+  declarations: components,
+  exports: components,
 })
 export class UiModule {}
