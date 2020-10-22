@@ -4,9 +4,9 @@ Mlask App will help you in conscious meal planning and assist you in maintaining
 
 ## Development server
 
-Run `ng serve mlask-client` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Run `npm run serve:client` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
-Run `ng serve mlask-api` for a api server.
+Run `npm run serve:api` for a api server. Api runs on http://localhost:3333/ but it's proxied on http://localhost:4200/api to avoid CORS issues.
 
 ## Build
 
@@ -14,13 +14,13 @@ Run `ng build mlask-client` to build the project. The build artifacts will be st
 
 ## Running unit tests
 
-Run `ng test mlask-client` to execute the unit tests via [Jest](https://jestjs.io).
+Run `npm run test:client` and `npm run test:api` to execute the unit tests via [Jest](https://jestjs.io).
 
 Run `nx affected:test` to execute the unit tests affected by a change.
 
 ## Running end-to-end tests
 
-Run `ng e2e mlask-client-e2e` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
+Run `npm run e2e:client` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
 
 Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
 
@@ -32,21 +32,17 @@ This project was generated using [Nx](https://nx.dev).
 
 [Nx Documentation](https://nx.dev/angular)
 
-[10-minute video showing all Nx features](https://nx.dev/angular/getting-started/what-is-nx)
-
-[Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
-
 ### Generate a library
 
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
+Run `ng g @nrwl/angular:lib my-lib` or `ng g @nrwl/workspace:lib my-lib` to generate a library.
 
 > You can also use any of the plugins above to generate libraries as well.
 
-Libraries are sharable across libraries and applications. They can be imported from `@mlsk/mylib`.
+Libraries are shareable across libraries and applications. They can be imported from `@mlsk/mylib`.
 
 ### Code scaffolding
 
-Run `ng g component my-component --project=mlask-client` to generate a new component.
+Run `ng g c my-component --project=mlask-client` to generate a new component.
 
 ### Understand your workspace
 
