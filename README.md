@@ -45,6 +45,9 @@ Run `nx dep-graph` to see a diagram of the dependencies of your projects.
 ## Useful links
 
 [Angular Checklist](https://angular-checklist.io/)
+
 [Component Driven Design](https://www.componentdriven.org/)
+
 [Storybook](https://storybook.js.org/docs/angular)
+
 [Nx Documentation](https://nx.dev/angular)

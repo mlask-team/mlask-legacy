@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'mlsk-todo',
@@ -9,7 +9,6 @@ export class TodoComponent {
   _text: string;
   @Input() set text(text: string) {
     this._text = text;
-    console.log(text);
   }
 
   get text() {
