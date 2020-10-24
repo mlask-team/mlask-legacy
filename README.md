@@ -28,17 +28,9 @@ Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
 
 ## Development using Nx
 
-This project was generated using [Nx](https://nx.dev).
-
-### Quick Start & Documentation
-
-[Nx Documentation](https://nx.dev/angular)
-
 ### Generate a library
 
 Run `ng g @nrwl/angular:lib my-lib` or `ng g @nrwl/workspace:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
 
 Libraries are shareable across libraries and applications. They can be imported from `@mlsk/mylib`.
 
@@ -49,3 +41,10 @@ Run `ng g c my-component --project=mlask-client` to generate a new component.
 ### Understand your workspace
 
 Run `nx dep-graph` to see a diagram of the dependencies of your projects.
+
+## Useful links
+
+[Angular Checklist](https://angular-checklist.io/)
+[Component Driven Design](https://www.componentdriven.org/)
+[Storybook](https://storybook.js.org/docs/angular)
+[Nx Documentation](https://nx.dev/angular)

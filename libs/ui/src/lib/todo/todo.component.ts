@@ -5,12 +5,15 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })
-export class TodoComponent implements OnInit {
-  @Input() text: string;
+export class TodoComponent {
+  _text: string;
+  @Input() set text(text: string) {
+    this._text = text;
+    console.log(text);
+  }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  get text() {
+    return this._text;
   }
 
 }

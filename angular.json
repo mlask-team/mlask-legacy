@@ -25,7 +25,9 @@
               "apps/mlask-client/src/favicon.ico",
               "apps/mlask-client/src/assets"
             ],
-            "styles": ["apps/mlask-client/src/styles.scss"],
+            "styles": [
+              "apps/mlask-client/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -85,7 +87,10 @@
               "apps/mlask-client/tsconfig.spec.json",
               "apps/mlask-client/tsconfig.editor.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/mlask-client/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/mlask-client/**/*"
+            ]
           }
         },
         "test": {
@@ -118,8 +123,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/mlask-client-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/mlask-client-e2e/**/*"]
+            "tsConfig": [
+              "apps/mlask-client-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/mlask-client-e2e/**/*"
+            ]
           }
         }
       }
@@ -135,9 +145,13 @@
           "options": {
             "tsConfig": [
               "libs/ui/tsconfig.lib.json",
-              "libs/ui/tsconfig.spec.json"
+              "libs/ui/tsconfig.spec.json",
+              "libs/ui/.storybook/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/ui/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ui/**/*"
+            ]
           }
         },
         "test": {
@@ -145,6 +159,36 @@
           "options": {
             "jestConfig": "libs/ui/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/ui/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/ui",
+            "config": {
+              "configFolder": "libs/ui/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
           }
         }
       },
@@ -167,7 +211,9 @@
             "outputPath": "dist/apps/mlask-api",
             "main": "apps/mlask-api/src/main.ts",
             "tsConfig": "apps/mlask-api/tsconfig.app.json",
-            "assets": ["apps/mlask-api/src/assets"]
+            "assets": [
+              "apps/mlask-api/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -196,7 +242,10 @@
               "apps/mlask-api/tsconfig.app.json",
               "apps/mlask-api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/mlask-api/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/mlask-api/**/*"
+            ]
           }
         },
         "test": {
@@ -217,8 +266,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/api-models/tsconfig.lib.json"],
-            "exclude": ["**/node_modules/**", "!libs/api-models/**/*"]
+            "tsConfig": [
+              "libs/api-models/tsconfig.lib.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/api-models/**/*"
+            ]
           }
         }
       }
