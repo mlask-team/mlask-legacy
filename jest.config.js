@@ -3,5 +3,6 @@ module.exports = {
     '<rootDir>/apps/mlask-client',
     '<rootDir>/libs/ui',
     '<rootDir>/apps/mlask-api',
+    '<rootDir>/libs/state',
   ],
 };

@@ -17,7 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@mlsk/ui": ["libs/ui/src/index.ts"],
-      "@mlsk/api-models": ["libs/api-models/src/index.ts"]
+      "@mlsk/api-models": ["libs/api-models/src/index.ts"],
+      "@mlsk/state": ["libs/state/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

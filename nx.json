@@ -34,9 +34,7 @@
     },
     "mlask-client-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "mlask-client"
-      ]
+      "implicitDependencies": ["mlask-client"]
     },
     "ui": {
       "tags": []
@@ -45,6 +43,9 @@
       "tags": []
     },
     "api-models": {
+      "tags": []
+    },
+    "state": {
       "tags": []
     }
   }
