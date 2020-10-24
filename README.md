@@ -8,6 +8,8 @@ Run `npm run serve:client` for a dev server. Navigate to http://localhost:4200/.
 
 Run `npm run serve:api` for a api server. Api runs on http://localhost:3333/ but it's proxied on http://localhost:4200/api to avoid CORS issues.
 
+Run `npm run start:all` to run both client and api.
+
 ## Build
 
 Run `ng build mlask-client` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.

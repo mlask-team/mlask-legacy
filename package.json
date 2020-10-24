@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "start:all": "nx run-many --target=serve --all --parallel",
     "start:client": "nx serve mlask-client",
     "start:api": "nx serve mlask-api",
     "test:client": "nx test mlask-client",
