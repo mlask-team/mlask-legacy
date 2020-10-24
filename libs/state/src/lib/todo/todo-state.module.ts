@@ -14,4 +14,4 @@ import { TodoFacade } from './state/todo.facade';
   ],
   providers: [TodoFacade],
 })
-export class TODOStateModule {}
+export class TodoStateModule {}
