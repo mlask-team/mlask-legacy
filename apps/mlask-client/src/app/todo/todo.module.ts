@@ -4,6 +4,7 @@ import { TodoPageComponent } from './views/todo-page/todo-page.component';
 import { TodoWrapperComponent } from './components/todo-wrapper/todo-wrapper.component';
 import { TodoRoutingModule } from './todo-routing.module';
 import { TodoStateModule } from '@mlsk/state';
+import { UiModule } from '@mlsk/ui';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { TodoStateModule } from '@mlsk/state';
   ],
   imports: [
     CommonModule,
+    UiModule,
     TodoRoutingModule,
     TodoStateModule
   ]

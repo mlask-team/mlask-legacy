@@ -12,3 +12,16 @@ export const loadTodoFailure = createAction(
   '[Todo] Load Todo Failure',
   props<{ error: any }>()
 );
+
+export const addTodo = createAction('[Todo] Add Todo');
+
+export const addTodoSuccess = createAction(
+  '[Todo] Add Todo Success',
+);
+
+export const addTodoFailure = createAction(
+  '[Todo] Add Todo Failure',
+  props<{ error: any }>()
+);
+
+export type dispatchable = typeof loadTodo | typeof addTodo;

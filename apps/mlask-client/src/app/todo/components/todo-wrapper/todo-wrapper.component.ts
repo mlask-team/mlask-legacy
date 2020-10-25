@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TodoFacade } from '@mlsk/state';
 
 @Component({
   selector: 'mlsk-todo-wrapper',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo-wrapper.component.scss']
 })
 export class TodoWrapperComponent implements OnInit {
+  todos$ = this.todos.allTodo$;
 
-  constructor() { }
+  constructor(private todos: TodoFacade) { }
 
   ngOnInit(): void {
+    this.todos.fetch();
   }
 
+  onClick() {
+    this.todos.add();
+  }
 }

@@ -47,6 +47,9 @@
     },
     "state": {
       "tags": []
+    },
+    "gateways": {
+      "tags": []
     }
   }
 }

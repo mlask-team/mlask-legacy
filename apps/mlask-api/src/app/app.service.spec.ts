@@ -13,9 +13,7 @@ describe('AppService', () => {
     service = app.get<AppService>(AppService);
   });
 
-  describe('getData', () => {
-    it('should return "Welcome to mlask-api!"', () => {
-      expect(service.getData()).toEqual({ message: 'Welcome to mlask-api!' });
-    });
+  it('should be defined', () => {
+    expect(service).toBeDefined();
   });
 });

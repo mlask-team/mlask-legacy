@@ -1,1 +1,5 @@
-<p>todo-wrapper works!</p>
+<div>
+  <mlsk-todo *ngFor="let t of todos$ | async" class="mlsk-todo" [text]="t.title"></mlsk-todo>
+</div>
+
+<button id="add-todo" (click)="onClick()">Add Todo</button>

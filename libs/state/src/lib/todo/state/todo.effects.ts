@@ -4,6 +4,8 @@ import { fetch } from '@nrwl/angular';
 
 import * as fromTodo from './todo.reducer';
 import * as TodoActions from './todo.actions';
+import { TodoGatewayService } from '@mlsk/gateways';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class TodoEffects {
@@ -12,8 +14,9 @@ export class TodoEffects {
       ofType(TodoActions.loadTodo),
       fetch({
         run: (action) => {
-          // Your custom service 'load' logic goes here. For now just return a success action...
-          return TodoActions.loadTodoSuccess({ todo: [] });
+          return this.gateway.fetch().pipe(
+            map(todo => ( TodoActions.loadTodoSuccess({ todo }) ))
+          );
         },
 
         onError: (action, error) => {
@@ -24,5 +27,33 @@ export class TodoEffects {
     )
   );
 
-  constructor(private actions$: Actions) {}
+  addTodo$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(TodoActions.addTodo),
+      fetch({
+        run: (action) => {
+          return this.gateway.add().pipe(
+            map(() => TodoActions.addTodoSuccess())
+          );
+        },
+
+        onError: (action, error) => {
+          console.error('Error', error);
+          return TodoActions.addTodoFailure({ error });
+        },
+      })
+    )
+  );
+
+  addTodoSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(TodoActions.addTodoSuccess),
+      map(() => TodoActions.loadTodo())
+    )
+  );
+
+  constructor(
+    private actions$: Actions,
+    private gateway: TodoGatewayService,
+  ) {}
 }

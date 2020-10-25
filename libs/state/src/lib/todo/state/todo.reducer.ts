@@ -27,11 +27,11 @@ export const initialState: State = todoAdapter.getInitialState({
 
 const todoReducer = createReducer(
   initialState,
-  on(TodoActions.loadTodo, (state) => ({
-    ...state,
-    loaded: false,
-    error: null,
-  })),
+  // on(TodoActions.loadTodo, (state) => ({
+  //   ...state,
+  //   loaded: false,
+  //   error: null,
+  // })),
   on(TodoActions.loadTodoSuccess, (state, { todo }) =>
     todoAdapter.setAll(todo, { ...state, loaded: true })
   ),

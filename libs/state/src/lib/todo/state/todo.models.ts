@@ -1,6 +1,6 @@
+import { TodoEntry } from '@mlsk/api-models';
+
 /**
  * Interface for the 'Todo' data
  */
-export interface TodoEntity {
-  id: string | number; // Primary ID
-}
+export type TodoEntity = TodoEntry;
