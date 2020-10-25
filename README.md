@@ -2,6 +2,20 @@
 
 Mlask App will help you in conscious meal planning and assist you in maintaining healthy day-to-day habits.
 
+## Project structure
+
+Apps
+
+- *mlask-api* - restful backend for Mlask App. Powered by NestJs.
+- *mlask-client* - frontend for Mlask App. Powered by Angular.
+
+Libs
+
+- *api-models* - interfaces for API's DTOs.
+- *gateways* - set of services for communication with API.
+- *state* - set of NGRX feature modules encapsulating all business logic and state management. All implementation details are hidden behind facades.
+- *ui* - module containing all basic UI components. Components are documented with Storybook.
+
 ## Development server
 
 Run `npm run serve:client` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
