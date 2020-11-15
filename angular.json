@@ -283,6 +283,31 @@
           "style": "scss"
         }
       }
+    },
+    "todo/api": {
+      "root": "libs/todo/api",
+      "sourceRoot": "libs/todo/api/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/todo/api/tsconfig.lib.json",
+              "libs/todo/api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/todo/api/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/todo/api/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

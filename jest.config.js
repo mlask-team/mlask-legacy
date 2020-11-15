@@ -5,5 +5,6 @@ module.exports = {
     '<rootDir>/apps/mlask-api',
     '<rootDir>/libs/todo/state',
     '<rootDir>/libs/gateways',
+    '<rootDir>/libs/todo/api',
   ],
 };
