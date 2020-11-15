@@ -4,8 +4,8 @@ import { fetch } from '@nrwl/angular';
 
 import * as fromTodo from './todo.reducer';
 import * as TodoActions from './todo.actions';
-import { TodoGatewayService } from '@mlsk/gateways';
 import { map } from 'rxjs/operators';
+import { TodoGatewayService } from '../gateway/todo-gateway.service';
 
 @Injectable()
 export class TodoEffects {

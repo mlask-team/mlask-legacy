@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoFacade } from '@mlsk/state';
+import { TodoFacade } from '@mlsk/todo/state';
 
 @Component({
   selector: 'mlsk-todo-wrapper',

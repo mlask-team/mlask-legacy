@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'state',
-  preset: '../../jest.preset.js',
+  displayName: 'todo/state',
+  preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -14,7 +14,7 @@ module.exports = {
       },
     },
   },
-  coverageDirectory: '../../coverage/libs/state',
+  coverageDirectory: '../../../coverage/libs/todo/state',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',

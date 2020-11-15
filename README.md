@@ -11,10 +11,9 @@ Apps
 
 Libs
 
-- *api-models* - interfaces for API's DTOs.
-- *gateways* - set of services for communication with API.
-- *state* - set of NGRX feature modules encapsulating all business logic and state management. All implementation details are hidden behind facades.
-- *ui* - module containing all basic UI components. Components are documented with Storybook.
+- *ui* - shared module containing all basic UI components. Components are documented with Storybook.
+- *{feature}/models* - interfaces for API's DTOs for the feature.
+- *{feature}/state* - set of NGRX feature modules encapsulating all business logic and state management. All implementation details are hidden behind facades.
 
 ## Development server
 

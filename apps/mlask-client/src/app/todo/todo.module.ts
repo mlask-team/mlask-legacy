@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TodoPageComponent } from './views/todo-page/todo-page.component';
 import { TodoWrapperComponent } from './components/todo-wrapper/todo-wrapper.component';
 import { TodoRoutingModule } from './todo-routing.module';
-import { TodoStateModule } from '@mlsk/state';
+import { TodoStateModule } from '@mlsk/todo/state';
 import { UiModule } from '@mlsk/ui';
 
 @NgModule({

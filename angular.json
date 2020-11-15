@@ -239,41 +239,41 @@
         }
       }
     },
-    "api-models": {
-      "root": "libs/api-models",
-      "sourceRoot": "libs/api-models/src",
+    "todo/models": {
+      "root": "libs/todo/models",
+      "sourceRoot": "libs/todo/models/src",
       "projectType": "library",
       "schematics": {},
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/api-models/tsconfig.lib.json"],
-            "exclude": ["**/node_modules/**", "!libs/api-models/**/*"]
+            "tsConfig": ["libs/todo/models/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**", "!libs/todo/models/**/*"]
           }
         }
       }
     },
-    "state": {
+    "todo/state": {
       "projectType": "library",
-      "root": "libs/state",
-      "sourceRoot": "libs/state/src",
+      "root": "libs/todo/state",
+      "sourceRoot": "libs/todo/state/src",
       "prefix": "mlsk",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/state/tsconfig.lib.json",
-              "libs/state/tsconfig.spec.json"
+              "libs/todo/state/tsconfig.lib.json",
+              "libs/todo/state/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/state/**/*"]
+            "exclude": ["**/node_modules/**", "!libs/todo/state/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/state/jest.config.js",
+            "jestConfig": "libs/todo/state/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -281,31 +281,6 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
-        }
-      }
-    },
-    "gateways": {
-      "root": "libs/gateways",
-      "sourceRoot": "libs/gateways/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/gateways/tsconfig.lib.json",
-              "libs/gateways/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/gateways/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/gateways/jest.config.js",
-            "passWithNoTests": true
-          }
         }
       }
     }

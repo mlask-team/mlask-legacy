@@ -1,4 +1,4 @@
-import { TodoEntry } from '@mlsk/api-models';
+import { TodoEntry } from '@mlsk/todo/models';
 
 /**
  * Interface for the 'Todo' data

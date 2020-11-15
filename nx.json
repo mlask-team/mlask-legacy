@@ -36,19 +36,16 @@
       "tags": [],
       "implicitDependencies": ["mlask-client"]
     },
-    "ui": {
-      "tags": []
-    },
     "mlask-api": {
       "tags": []
     },
-    "api-models": {
+    "todo/models": {
       "tags": []
     },
-    "state": {
+    "todo/state": {
       "tags": []
     },
-    "gateways": {
+    "ui": {
       "tags": []
     }
   }
