@@ -1,4 +1,5 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { CreateTodoListDto } from '@mlsk/todo/models';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { TodoService } from './todo.service';
 
 @Controller('todo')
@@ -11,7 +12,7 @@ export class TodoController {
   }
 
   @Post('')
-  addTodo() {
-    return this.appService.addTodo();
+  addTodo(@Body() item: CreateTodoListDto) {
+    return this.appService.addTodo(item);
   }
 }

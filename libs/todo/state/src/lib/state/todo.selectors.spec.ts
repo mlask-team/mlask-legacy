@@ -1,15 +1,16 @@
-import { TodoEntity } from './todo.models';
+import { TodoList } from '@mlsk/todo/models';
 import { State, todoAdapter, initialState } from './todo.reducer';
 import * as TodoSelectors from './todo.selectors';
 
 describe('Todo Selectors', () => {
   const ERROR_MSG = 'No Error Available';
   const getTodoId = (it) => it['id'];
-  const createTodoEntity = (id: string, name = '') =>
+  const createTodoList = (id: string, name = '') =>
     ({
       id,
-      name: name || `name-${id}`,
-    } as TodoEntity);
+      title: name || `name-${id}`,
+      items: []
+    } as TodoList);
 
   let state;
 
@@ -17,9 +18,9 @@ describe('Todo Selectors', () => {
     state = {
       todo: todoAdapter.setAll(
         [
-          createTodoEntity('PRODUCT-AAA'),
-          createTodoEntity('PRODUCT-BBB'),
-          createTodoEntity('PRODUCT-CCC'),
+          createTodoList('PRODUCT-AAA'),
+          createTodoList('PRODUCT-BBB'),
+          createTodoList('PRODUCT-CCC'),
         ],
         {
           ...initialState,

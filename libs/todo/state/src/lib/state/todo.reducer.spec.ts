@@ -1,23 +1,24 @@
-import { TodoEntity } from './todo.models';
+import { TodoList } from '@mlsk/todo/models';
 import * as TodoActions from './todo.actions';
 import { State, initialState, reducer } from './todo.reducer';
 
 describe('Todo Reducer', () => {
-  const createTodoEntity = (id: string, name = '') =>
+  const createTodoList = (id: string, name = '') =>
     ({
       id,
-      name: name || `name-${id}`,
-    } as TodoEntity);
+      title: name || `name-${id}`,
+      items: []
+    } as TodoList);
 
   beforeEach(() => {});
 
   describe('valid Todo actions', () => {
     it('loadTodoSuccess should return set the list of known Todo', () => {
-      const todo = [
-        createTodoEntity('PRODUCT-AAA'),
-        createTodoEntity('PRODUCT-zzz'),
+      const todos = [
+        createTodoList('PRODUCT-AAA'),
+        createTodoList('PRODUCT-zzz'),
       ];
-      const action = TodoActions.loadTodoSuccess({ todo });
+      const action = TodoActions.loadTodoSuccess({ todos });
 
       const result: State = reducer(initialState, action);
 

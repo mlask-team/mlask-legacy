@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
+import { CreateTodoListDto, TodoList } from '@mlsk/todo/models';
 
-import { select, Store, Action } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import * as TodoActions from './todo.actions';
 
 import * as fromTodo from './todo.reducer';
@@ -22,7 +23,15 @@ export class TodoFacade {
     this.dispatch(TodoActions.loadTodo());
   }
 
-  add() {
-    this.dispatch(TodoActions.addTodo());
+  add(todo: CreateTodoListDto) {
+    this.dispatch(TodoActions.addTodo({ todo }));
+  }
+
+  update(todo: TodoList) {
+    this.dispatch(TodoActions.updateTodo({ todo }));
+  }
+
+  delete(todo: TodoList) {
+    this.dispatch(TodoActions.deleteTodo({ todo }));
   }
 }

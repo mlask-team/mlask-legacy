@@ -1,22 +1,21 @@
 import { Injectable } from '@nestjs/common';
-import { TodoEntry } from '@mlsk/todo/models';
+import { CreateTodoListDto, TodoList } from '@mlsk/todo/models';
 
 @Injectable()
 export class TodoService {
-  todos: TodoEntry[] = [
-    { id: '1', title: 'Todo 1' },
-    { id: '2', title: 'Todo 2' }
+  todos: TodoList[] = [
+    { id: '1', title: 'Todo 1', items: [] },
+    { id: '2', title: 'Todo 2', items: [] }
   ];
 
-  getData(): TodoEntry[] {
+  getData(): TodoList[] {
     return this.todos;
   }
 
-  addTodo() {
-    const id = Math.floor(Math.random() * 1000);
-    this.todos.push({
-      id: id.toString(),
-      title: `New todo ${id}`,
-    });
+  addTodo(item: CreateTodoListDto) {
+    const id = Math.floor(Math.random() * 1000).toString();
+    const newItem = { ...item, id };
+    this.todos.push(newItem);
+    return newItem;
   }
 }

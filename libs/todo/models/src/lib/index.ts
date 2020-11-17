@@ -1,1 +1,1 @@
-export * from './todo-entry.model';
+export * from './todo.model';

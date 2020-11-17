@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TodoEntry } from '@mlsk/todo/models';
+import { CreateTodoListDto, TodoList } from '@mlsk/todo/models';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +8,19 @@ import { TodoEntry } from '@mlsk/todo/models';
 export class TodoGatewayService {
   constructor(private http: HttpClient) { }
 
-  fetch() {
-    return this.http.get<TodoEntry[]>('/api/todo');
+  getAll() {
+    return this.http.get<TodoList[]>('/api/todo');
   }
 
-  add() {
-    return this.http.post('/api/todo', {});
+  add(newList: CreateTodoListDto) {
+    return this.http.post<TodoList>('/api/todo', newList);
+  }
+
+  update(newList: TodoList) {
+    return this.http.put<TodoList>('/api/todo', newList);
+  }
+
+  delete(updated: TodoList) {
+    return this.http.put<TodoList>('/api/todo', updated);
   }
 }

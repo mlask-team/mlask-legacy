@@ -16,6 +16,6 @@ export class TodoWrapperComponent implements OnInit {
   }
 
   onClick() {
-    this.todos.add();
+    this.todos.add({ title: 'test', items: [] });
   }
 }
