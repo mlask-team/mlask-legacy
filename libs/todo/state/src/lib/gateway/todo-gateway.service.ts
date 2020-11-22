@@ -16,11 +16,11 @@ export class TodoGatewayService {
     return this.http.post<TodoList>('/api/todo', newList);
   }
 
-  update(newList: TodoList) {
-    return this.http.put<TodoList>('/api/todo', newList);
+  update({ id, ...listDto}: TodoList) {
+    return this.http.put<TodoList>(`/api/todo/${id}`, listDto);
   }
 
   delete(updated: TodoList) {
-    return this.http.put<TodoList>('/api/todo', updated);
+    return this.http.delete<TodoList>(`/api/todo/${updated.id}`);
   }
 }

@@ -16,9 +16,11 @@ describe('TodoController', () => {
     expect(controller).toBeDefined();
   });
 
-  describe('getDate', () => {
-    it('should return data', () => {
-      expect(controller.getData()).toBeDefined();
+  describe('getAll', () => {
+    it('should be defined', () => {
+      expect(controller.getAll()).toBeDefined();
     });
   });
+
+  // TODO: add some sensible spec stories
 });

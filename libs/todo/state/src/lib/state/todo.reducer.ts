@@ -38,6 +38,7 @@ const todoReducer = createReducer(
   ),
   on(TodoActions.addTodoSuccess, (state, { todo }) => {
     const midState = todoAdapter.removeOne(TEMP_ID, state);
+    console.log(midState);
     return todoAdapter.addOne(todo, midState)
   }),
 

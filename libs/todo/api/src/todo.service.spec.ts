@@ -12,9 +12,11 @@ describe('TodoService', () => {
     service = module.get<TodoService>(TodoService);
   });
 
-  describe('getDate', () => {
+  describe('getAll', () => {
     it('should return data', () => {
-      expect(service.getData()).toBeDefined();
+      expect(service.getAll()).toBeDefined();
     });
   });
+
+  // TODO: add some sensible spec stories
 });
