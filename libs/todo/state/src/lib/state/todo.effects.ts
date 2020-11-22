@@ -32,16 +32,16 @@ export class TodoEffects {
   addTodo$ = createEffect(() =>
     this.actions$.pipe(
       ofType(TodoActions.addTodo),
-      fetch({
+      optimisticUpdate({
         run: ({todo}) => {
           return this.gateway.add(todo).pipe(
             map(newTodo => TodoActions.addTodoSuccess({ todo: newTodo }))
           );
         },
 
-        onError: (action, error) => {
+        undoAction: ({ todo }, error) => {
           console.error('Error', error);
-          return TodoActions.addTodoFailure({ error });
+          return TodoActions.addTodoUndo({ todo: { id: fromTodo.TEMP_ID, ...todo } });
         },
       })
     )
@@ -79,15 +79,15 @@ export class TodoEffects {
     )
   );
 
-  updateTodoUndo$ = createEffect(() =>
+  todoUndo$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(TodoActions.updateTodoUndo, TodoActions.deleteTodoUndo),
+      ofType(TodoActions.addTodoUndo, TodoActions.updateTodoUndo, TodoActions.deleteTodoUndo),
       withLatestFrom(this.store$.pipe(
         select(TodoSelectors.getAllTodo),
         pairwise(),
       )),
       map(([action, [prevState, curState]]) => {
-        return TodoActions.loadTodoSuccess({ todos: prevState });
+        return TodoActions.undoTodoState({ todos: prevState });
       }),
     )
   );

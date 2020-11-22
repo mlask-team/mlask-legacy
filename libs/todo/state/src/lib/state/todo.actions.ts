@@ -23,6 +23,12 @@ export const addTodoSuccess = createAction(
   props<{ todo: TodoList }>()
 );
 
+export const addTodoUndo = createAction(
+  '[Todo] Add Todo Undo',
+  props<{ todo: TodoList }>()
+);
+
+// TODO: remove?
 export const addTodoFailure = createAction(
   '[Todo] Add Todo Failure',
   props<{ error: any }>()
@@ -56,6 +62,11 @@ export const deleteTodoSuccess = createAction(
 export const deleteTodoUndo = createAction(
   '[Todo] Delete Todo Undo',
   props<{ todo: TodoList }>()
+);
+
+export const undoTodoState = createAction(
+  '[Todo] Undo Todo State',
+  props<{ todos: TodoList[] }>()
 );
 
 export type dispatchable = typeof loadTodo | typeof addTodo | typeof updateTodo | typeof deleteTodo;

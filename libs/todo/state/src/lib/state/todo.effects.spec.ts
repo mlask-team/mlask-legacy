@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 
 import { provideMockActions } from '@ngrx/effects/testing';
 import { provideMockStore } from '@ngrx/store/testing';
@@ -41,7 +41,7 @@ describe('TodoEffects', () => {
   });
 
   describe('loadTodo$', () => {
-    it('should work', () => {
+    it('should dispatch loadTodoSuccess on successful api call', () => {
       const expectedData = [createTodoList('asdf')];
       todoGatewaySpy.getAll.mockReturnValueOnce(of(expectedData));
 
@@ -53,7 +53,62 @@ describe('TodoEffects', () => {
         expect(action).toBeObservable(expected);
       })
     });
+
+    it('should dispatch loadTodoFailure on failed api call', () => {
+      const error = { status: '400', message: 'Something went wrong!' };
+      todoGatewaySpy.getAll.mockReturnValueOnce(throwError(error));
+
+      actions = of(TodoActions.loadTodo());
+
+      const expected = TodoActions.loadTodoFailure({ error });
+
+      effects.loadTodo$.subscribe(action => {
+        expect(action).toBeObservable(expected);
+      })
+    });
   });
-  
-  // TODO: more test cases
+
+  xdescribe('addTodo$', () => {
+    it('should dispatch addTodoSuccess on successful api call', () => {
+      expect(true).toBeFalsy();
+    });
+
+    it('should dispatch addTodoFailure on failed api call', () => {
+      expect(true).toBeFalsy();
+    });
+  });
+
+  xdescribe('updateTodo$', () => {
+    it('should pass updateTodo regardless of api call result to perform optimistic update', () => {
+      expect(true).toBeFalsy();
+    });
+
+    it('should dispatch updateTodoSuccess on successful api call', () => {
+      expect(true).toBeFalsy();
+    });
+
+    it('should dispatch updateTodoUndo on failed api call', () => {
+      expect(true).toBeFalsy();
+    });
+  });
+
+  xdescribe('deleteTodo$', () => {
+    it('should pass deleteTodo regardless of api call result to perform optimistic update', () => {
+      expect(true).toBeFalsy();
+    });
+
+    it('should dispatch deleteTodoSuccess on successful api call', () => {
+      expect(true).toBeFalsy();
+    });
+
+    it('should dispatch deleteTodoUndo on failed api call', () => {
+      expect(true).toBeFalsy();
+    });
+  });
+
+  xdescribe('updateTodoUndo$', () => {
+    it('should correctly set previous state', () => {
+      expect(true).toBeFalsy();
+    });
+  });
 });
