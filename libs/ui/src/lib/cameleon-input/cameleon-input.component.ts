@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'mlsk-todo',
-  templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.scss']
+  selector: 'mlsk-cameleon-input',
+  templateUrl: './cameleon-input.component.html',
+  styleUrls: ['./cameleon-input.component.scss']
 })
-export class TodoComponent {
+export class CameleonInputComponent {
   _text: string;
   @Input() set text(text: string) {
     this._text = text;
@@ -14,5 +14,4 @@ export class TodoComponent {
   get text() {
     return this._text;
   }
-
 }

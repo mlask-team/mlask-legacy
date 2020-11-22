@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TodoComponent } from './todo/todo.component';
+import { FormsModule } from '@angular/forms';
+import { ChecklistItemComponent } from './checklist-item/checklist-item.component';
 
 const components = [
-  TodoComponent,
+  ChecklistItemComponent,
 ];
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+  ],
   declarations: components,
   exports: components,
 })

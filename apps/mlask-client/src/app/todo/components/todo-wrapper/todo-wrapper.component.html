@@ -1,5 +1,5 @@
 <div>
-  <mlsk-todo *ngFor="let t of todos$ | async" class="mlsk-todo" [text]="t.title"></mlsk-todo>
+  <mlsk-checklist-item *ngFor="let t of todos$ | async" class="mlsk-checklist-item" [text]="t.title"></mlsk-checklist-item>
 </div>
 
 <button id="add-todo" (click)="onClick()">Add Todo</button>

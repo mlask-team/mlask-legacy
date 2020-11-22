@@ -1,18 +1,17 @@
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { text, withKnobs } from '@storybook/addon-knobs';
-import { TodoComponent } from './todo.component';
+import { CameleonInputComponent } from './cameleon-input.component';
 
 export default {
-  title: 'TodoComponent',
-  component: TodoComponent,
+  title: 'CameleonInputComponent',
+  component: CameleonInputComponent,
   decorators: [
     withKnobs
   ]
-
 } as Meta;
 
-const Template: Story<TodoComponent> = (args) => ({
-  component: TodoComponent,
+const Template: Story<CameleonInputComponent> = (args) => ({
+  component: CameleonInputComponent,
   props: args,
 });
 
