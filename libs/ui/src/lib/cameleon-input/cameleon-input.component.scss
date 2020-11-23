@@ -1,0 +1,46 @@
+$orange: #F6A637;
+$carrot: #DA6512;
+$blue: #207596;
+$animate: all 0.25s ease-in-out;
+
+.underline {
+  display: block;
+  height: 2px;
+  width: 0;
+  opacity: 0;
+  background-color: $orange;
+  transition: all 0s;
+}
+
+input {
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  color: $carrot;
+  caret-color: $carrot;
+
+  font-weight: 600; // font-family: "GilroyExtraBold";
+  
+  border: none;
+  outline: none;
+
+  &::placeholder {
+    color: $blue;
+    font-size: 16px;
+  }
+
+  &:focus {
+    border: none;
+    outline: none;
+    &+.underline {
+      background-color: $carrot;
+      width: 100%;
+      opacity: 1;
+      transition: $animate;
+    }
+
+    &::placeholder {
+      opacity: 0;
+    }
+  }
+}

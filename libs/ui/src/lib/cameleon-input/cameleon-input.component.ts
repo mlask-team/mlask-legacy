@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'mlsk-cameleon-input',
@@ -6,12 +6,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./cameleon-input.component.scss']
 })
 export class CameleonInputComponent {
-  _text: string;
-  @Input() set text(text: string) {
-    this._text = text;
-  }
+  @Input() text: string;
+  @Input() placeholder: string;
 
-  get text() {
-    return this._text;
-  }
+  @Output() textChange = new EventEmitter<string>();
 }

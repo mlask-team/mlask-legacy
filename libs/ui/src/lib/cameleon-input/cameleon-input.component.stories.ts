@@ -15,7 +15,14 @@ const Template: Story<CameleonInputComponent> = (args) => ({
   props: args,
 });
 
-export const YourStory = Template.bind({});
-YourStory.args = {
-  text: text('text', 'TODO ITEM')
+export const Empty = Template.bind({});
+Empty.args = {
+  text: text('text', ''),
+  placeholder: text('placeholder', 'New item'),
+};
+
+export const Filled = Template.bind({});
+Filled.args = {
+  text: text('text', 'Buy grocery'),
+  placeholder: text('placeholder', 'New item'),
 };
