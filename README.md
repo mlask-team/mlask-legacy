@@ -11,6 +11,7 @@ Apps
 
 Libs
 
+- *theme* - shared assets and scss files.
 - *ui* - shared module containing all basic UI components. Components are documented with Storybook.
 - *{feature}/api* - all backend logic related to domain of this feature.
 - *{feature}/models* - interfaces for API's DTOs for the feature.
@@ -26,21 +27,9 @@ Run `npm run serve:api` for a api server. Api runs on http://localhost:3333/ but
 
 Run `npm run start:all` to run both client and api.
 
-## Build
+## Running tasks
 
-Run `ng build mlask-client` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `npm run test:client` and `npm run test:api` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `npm run e2e:client` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
+We recommend [Nx Console](https://nx.dev/latest/angular/cli/console) plugin to run tasks related to each app and lib.
 
 ## Development using Nx
 
