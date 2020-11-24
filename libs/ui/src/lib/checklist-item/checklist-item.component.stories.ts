@@ -18,5 +18,5 @@ const Template: Story<ChecklistItemComponent> = (args) => ({
 
 export const YourStory = Template.bind({});
 YourStory.args = {
-  text: text('text', 'CHECKLIST ITEM')
+  text: text('YourStory:text', 'CHECKLIST ITEM')
 };

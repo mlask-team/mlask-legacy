@@ -6,7 +6,7 @@
     "start:all": "nx run-many --target=serve --all --parallel",
     "start:client": "nx serve mlask-client",
     "start:api": "nx serve mlask-api",
-    "ui": "nx run ui:storybook",
+    "storybook:ui": "nx run ui:storybook",
     "test:client": "nx test mlask-client",
     "test:api": "nx test mlask-api",
     "e2e:client": "nx e2e mlask-client-e2e --watch --headless",
@@ -20,6 +20,7 @@
   },
   "private": true,
   "dependencies": {
+    "@mlsk/theme": "file:libs/theme",
     "@angular/animations": "^10.1.0",
     "@angular/common": "^10.1.0",
     "@angular/compiler": "^10.1.0",

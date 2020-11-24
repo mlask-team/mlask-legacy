@@ -23,9 +23,14 @@
             "aot": true,
             "assets": [
               "apps/mlask-client/src/favicon.ico",
-              "apps/mlask-client/src/assets"
+              "apps/mlask-client/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./libs/theme/",
+                "output": "./assets"
+              }
             ],
-            "styles": ["apps/mlask-client/src/styles.scss"],
+            "styles": ["libs/theme/styles/styles.scss"],
             "scripts": []
           },
           "configurations": {

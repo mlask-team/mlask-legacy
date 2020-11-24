@@ -17,12 +17,12 @@ const Template: Story<CameleonInputComponent> = (args) => ({
 
 export const Empty = Template.bind({});
 Empty.args = {
-  text: text('text', ''),
-  placeholder: text('placeholder', 'New item'),
+  text: text('Empty:text', ''),
+  placeholder: text('Empty:placeholder', 'New item'),
 };
 
 export const Filled = Template.bind({});
 Filled.args = {
-  text: text('text', 'Buy grocery'),
-  placeholder: text('placeholder', 'New item'),
+  text: text('Filled:text', 'Buy grocery'),
+  placeholder: text('Filled:placeholder', 'New item'),
 };
