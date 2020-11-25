@@ -1,0 +1,13 @@
+@import "~@mlsk/theme/styles/colors";
+
+@mixin gradient-orange {
+  $orange-gradient: linear-gradient(319.6deg, $carrot 45.27%, $orange 100%);
+}
+
+@mixin round-corners {
+  border-radius: 11px;
+}
+
+@mixin shadow {
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
