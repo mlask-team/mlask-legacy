@@ -1,6 +1,5 @@
-$orange: #F6A637;
-$carrot: #DA6512;
-$blue: #207596;
+@import "~@mlsk/theme/styles/colors";
+
 $animate: all 0.25s ease-in-out;
 
 .underline {
@@ -18,6 +17,7 @@ input {
   font-size: 16px;
   color: $carrot;
   caret-color: $carrot;
+  background: inherit;
 
   border: none;
   outline: none;

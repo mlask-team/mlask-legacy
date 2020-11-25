@@ -1,5 +1,11 @@
 @import "~@mlsk/theme/styles/fonts";
+@import "~@mlsk/theme/styles/colors";
 
 * {
   font-family: "GilroyExtraBold", Arial, Helvetica, sans-serif;
+  color: $dark;
+}
+
+body {
+  background: $background;
 }
