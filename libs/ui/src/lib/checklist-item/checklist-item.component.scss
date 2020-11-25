@@ -1,0 +1,25 @@
+@import "~@mlsk/theme/styles/colors";
+
+.row {
+  display: flex;
+}
+
+.checkmark {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  background-color: $carrot;
+  cursor: pointer;
+  margin-top: 2px;
+  margin-right: 10px;
+  mask: url('/assets/images/checkbox-unchecked.svg') no-repeat center;
+
+  &.checked {
+    mask: url('/assets/images/checkbox-checked.svg') no-repeat center;
+  }
+
+  &.empty {
+    opacity: 0;
+    pointer-events: none;;
+  }
+}

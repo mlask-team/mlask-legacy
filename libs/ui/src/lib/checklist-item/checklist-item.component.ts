@@ -6,13 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./checklist-item.component.scss']
 })
 export class ChecklistItemComponent {
-  _text: string;
-  @Input() set text(text: string) {
-    this._text = text;
-  }
-
-  get text() {
-    return this._text;
-  }
-
+  @Input() text: string;
+  @Input() checked: boolean;
 }
