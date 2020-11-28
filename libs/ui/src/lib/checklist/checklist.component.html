@@ -1,6 +1,11 @@
-<div class="row" *ngFor="let item of items">
+<div class="row" *ngFor="let group of formArray.controls; let idx = index">
   <mlsk-checkbox
-    [value]="item.checked"
+    [formControl]="group.get('checked')"
+    [empty]="!group.get('text').value"
   ></mlsk-checkbox>
-  <mlsk-cameleon-input [value]="item.text" placeholder=""></mlsk-cameleon-input>
+  <mlsk-cameleon-input
+    placeholder="New Item"
+    [formControl]="group.get('text')"
+    (blur)="onRowBlur(idx)"
+  ></mlsk-cameleon-input>
 </div>

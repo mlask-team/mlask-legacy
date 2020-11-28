@@ -1,4 +1,4 @@
-import { Component, Input, Optional, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Optional, Output, ViewChild } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, ControlContainer, FormControl, FormControlDirective } from '@angular/forms';
 
 @Component({
@@ -15,10 +15,12 @@ export class CameleonInputComponent implements ControlValueAccessor {
   @ViewChild(FormControlDirective, {static: true})
   formControlDirective: FormControlDirective;
 
-  @Input() value: FormControl;
   @Input() formControl: FormControl;
   @Input() formControlName: string;
   @Input() placeholder: string;
+
+  // tslint:disable-next-line: no-output-rename
+  @Output('blur') emitBlur = new EventEmitter();
 
   get control() {
     return this.formControl || this.controlContainer?.control.get(this.formControlName);
@@ -41,5 +43,10 @@ export class CameleonInputComponent implements ControlValueAccessor {
 
   setDisabledState(isDisabled: boolean): void {
     this.formControlDirective.valueAccessor.setDisabledState(isDisabled);
+  }
+
+  onBlur() {
+    // NOTE: workaround for issues with calling onBlur event
+    this.emitBlur.next();
   }
 }

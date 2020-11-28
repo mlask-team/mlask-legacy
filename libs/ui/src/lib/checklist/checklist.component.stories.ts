@@ -1,5 +1,5 @@
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { text, withKnobs } from '@storybook/addon-knobs';
+import { withKnobs } from '@storybook/addon-knobs';
 import { ChecklistComponent } from './checklist.component';
 import { CameleonInputComponent } from '../cameleon-input/cameleon-input.component';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
@@ -13,7 +13,7 @@ export default {
       declarations: [
         ChecklistComponent,
         CheckboxComponent,
-        CameleonInputComponent
+        CameleonInputComponent,
       ],
       imports: [
         FormsModule,

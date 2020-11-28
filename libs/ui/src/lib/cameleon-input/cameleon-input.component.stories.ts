@@ -20,7 +20,7 @@ export default {
 
 const Template: Story<CameleonInputComponent> = (args) => ({
   template: `
-    <mlsk-cameleon-input [value]="text" name="input-text" [placeholder]="placeholder"></mlsk-cameleon-input>
+    <mlsk-cameleon-input [(ngModel)]="text" [placeholder]="placeholder"></mlsk-cameleon-input>
   `,
   props: args,
 });

@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { CameleonInputComponent } from '../cameleon-input/cameleon-input.component';
 
 @Component({
   selector: 'mlsk-checkbox',
@@ -8,7 +7,7 @@ import { CameleonInputComponent } from '../cameleon-input/cameleon-input.compone
   styleUrls: ['./checkbox.component.scss'],
   providers: [{
     provide: NG_VALUE_ACCESSOR,
-    useExisting: CameleonInputComponent,
+    useExisting: CheckboxComponent,
     multi: true
   }]
 })
