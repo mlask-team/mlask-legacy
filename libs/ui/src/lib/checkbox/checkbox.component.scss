@@ -2,6 +2,7 @@
 
 $img-unchecked: '/assets/images/checkbox-unchecked.svg';
 $img-checked: '/assets/images/checkbox-checked.svg';
+$plus: '/assets/images/plus.svg';
 
 .checkmark {
   display: inline-block;
@@ -18,7 +19,12 @@ $img-checked: '/assets/images/checkbox-checked.svg';
   }
 
   &.empty {
-    opacity: 0;
+    background-color: $blue;
+    mask: url($plus) no-repeat center;
     pointer-events: none;;
+  }
+
+  &.empty.withoutPlus {
+    opacity: 0;
   }
 }
