@@ -1,20 +1,31 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CameleonInputComponent } from '../cameleon-input/cameleon-input.component';
+import { CheckboxComponent } from '../checkbox/checkbox.component';
 
-import { ChecklistItemComponent } from './checklist-item.component';
+import { ChecklistComponent } from './checklist.component';
 
-describe('ChecklistItemComponent', () => {
-  let component: ChecklistItemComponent;
-  let fixture: ComponentFixture<ChecklistItemComponent>;
+describe('ChecklistComponent', () => {
+  let component: ChecklistComponent;
+  let fixture: ComponentFixture<ChecklistComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChecklistItemComponent ]
+      declarations: [
+        ChecklistComponent,
+        CheckboxComponent,
+        CameleonInputComponent,
+      ],
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+      ],
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChecklistItemComponent);
+    fixture = TestBed.createComponent(ChecklistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

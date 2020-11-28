@@ -1,4 +1,6 @@
-<mlsk-checklist-item *ngFor="let item of items"
-  [checked]="item.checked"
-  [text]="item.text"
-></mlsk-checklist-item>
+<div class="row" *ngFor="let item of items">
+  <mlsk-checkbox
+    [value]="item.checked"
+  ></mlsk-checkbox>
+  <mlsk-cameleon-input [value]="item.text" placeholder=""></mlsk-cameleon-input>
+</div>

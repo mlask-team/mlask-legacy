@@ -1,8 +1,7 @@
 @import "~@mlsk/theme/styles/colors";
 
-.row {
-  display: flex;
-}
+$img-unchecked: '/assets/images/checkbox-unchecked.svg';
+$img-checked: '/assets/images/checkbox-checked.svg';
 
 .checkmark {
   display: inline-block;
@@ -12,10 +11,10 @@
   cursor: pointer;
   margin-top: 2px;
   margin-right: 10px;
-  mask: url('/assets/images/checkbox-unchecked.svg') no-repeat center;
+  mask: url($img-unchecked) no-repeat center;
 
   &.checked {
-    mask: url('/assets/images/checkbox-checked.svg') no-repeat center;
+    mask: url($img-checked) no-repeat center;
   }
 
   &.empty {

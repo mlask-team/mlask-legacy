@@ -1,2 +1,5 @@
-<input type="text" [(ngModel)]="text" [placeholder]="placeholder"/>
+<input type="text" *ngIf="control; else justValue" [formControl]="control" [placeholder]="placeholder"/>
+<ng-template #justValue>
+  <input type="text" [value]="value || ''" [placeholder]="placeholder"/>
+</ng-template>
 <span class="underline"></span>

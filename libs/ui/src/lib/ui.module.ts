@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { ChecklistItemComponent } from './checklist-item/checklist-item.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CameleonInputComponent } from './cameleon-input/cameleon-input.component';
+import { CheckboxComponent } from './checkbox/checkbox.component';
+import { ChecklistComponent } from './checklist/checklist.component';
 
 const components = [
   CameleonInputComponent,
-  ChecklistItemComponent,
+  CheckboxComponent,
+  ChecklistComponent,
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: components,
   exports: components,

@@ -1,13 +1,45 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, Optional, ViewChild } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, ControlContainer, FormControl, FormControlDirective } from '@angular/forms';
 
 @Component({
   selector: 'mlsk-cameleon-input',
   templateUrl: './cameleon-input.component.html',
-  styleUrls: ['./cameleon-input.component.scss']
+  styleUrls: ['./cameleon-input.component.scss'],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: CameleonInputComponent,
+    multi: true
+  }]
 })
-export class CameleonInputComponent {
-  @Input() text: string;
+export class CameleonInputComponent implements ControlValueAccessor {
+  @ViewChild(FormControlDirective, {static: true})
+  formControlDirective: FormControlDirective;
+
+  @Input() value: FormControl;
+  @Input() formControl: FormControl;
+  @Input() formControlName: string;
   @Input() placeholder: string;
 
-  @Output() textChange = new EventEmitter<string>();
+  get control() {
+    return this.formControl || this.controlContainer?.control.get(this.formControlName);
+  }
+
+  constructor(@Optional() private controlContainer: ControlContainer) {
+  }
+
+  registerOnTouched(fn: any): void {
+    this.formControlDirective.valueAccessor.registerOnTouched(fn);
+  }
+
+  registerOnChange(fn: any): void {
+    this.formControlDirective.valueAccessor.registerOnChange(fn);
+  }
+
+  writeValue(obj: any): void {
+    this.formControlDirective.valueAccessor.writeValue(obj);
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.formControlDirective.valueAccessor.setDisabledState(isDisabled);
+  }
 }
