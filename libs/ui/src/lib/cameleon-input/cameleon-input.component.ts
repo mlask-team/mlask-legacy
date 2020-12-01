@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Optional, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Optional, Output, ViewChild } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, ControlContainer, FormControl, FormControlDirective } from '@angular/forms';
 
 @Component({
@@ -14,6 +14,9 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor, ControlContainer, FormControl,
 export class CameleonInputComponent implements ControlValueAccessor {
   @ViewChild(FormControlDirective, {static: true})
   formControlDirective: FormControlDirective;
+
+  @ViewChild('input', {static: true})
+  inputElement: ElementRef;
 
   @Input() formControl: FormControl;
   @Input() formControlName: string;
@@ -48,5 +51,9 @@ export class CameleonInputComponent implements ControlValueAccessor {
   onBlur() {
     // NOTE: workaround for issues with calling onBlur event
     this.emitBlur.next();
+  }
+
+  focus() {
+    this.inputElement.nativeElement.focus();
   }
 }

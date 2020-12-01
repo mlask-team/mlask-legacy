@@ -32,3 +32,5 @@ const Template: Story<ChecklistComponent> = (args) => ({
 export const Default = Template.bind({});
 Default.args = {
 };
+
+// TODO: add controls to this story
