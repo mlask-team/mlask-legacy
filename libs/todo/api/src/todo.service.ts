@@ -1,36 +1,25 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CreateTodoListDto, TodoList } from '@mlsk/todo/models';
+import { TodoRepository } from './todo.repository';
 
 @Injectable()
 export class TodoService {
-  todos: TodoList[] = [
-    { id: '1', title: 'Todo 1', items: [] },
-    { id: '2', title: 'Todo 2', items: [] }
-  ];
+
+  constructor(private repository: TodoRepository) {}
 
   getAll(): TodoList[] {
-    return this.todos;
+    return this.repository.getAll();
   }
 
   addTodo(item: CreateTodoListDto) {
-    const id = Math.floor(Math.random() * 1000).toString();
-    const newItem = { ...item, id };
-    this.todos.push(newItem);
-    return newItem;
+    return this.repository.addTodo(item);
   }
 
   updateTodo(id: string, item: CreateTodoListDto) {
-    const match = this.todos.find(todo => todo.id === id);
-    if (!match) throw new HttpException('Not Found', HttpStatus.NOT_FOUND);
-    Object.keys(item).forEach(function(key) {
-      match[key] = item[key];
-    });
-    return match;
+    return this.repository.updateTodo(id, item);
   }
 
   deleteTodo(id: string) {
-    const matchIndex = this.todos.findIndex(todo => todo.id === id);
-    if (matchIndex === -1) throw new HttpException('Not Found', HttpStatus.NOT_FOUND);
-    return this.todos.splice(matchIndex, 1);
+    return this.repository.deleteTodo(id);
   }
 }
