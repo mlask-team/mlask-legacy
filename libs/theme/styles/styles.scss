@@ -6,10 +6,27 @@
 * {
   @include text;
   color: $dark;
+  font-weight: 400;
 }
 
 body {
   background: $background;
+}
+
+h1 {
+  @include h1;
+}
+
+h2 {
+  @include h2;
+}
+
+h3 {
+  @include h3;
+}
+
+p {
+  @include text-basic;
 }
 
 button {

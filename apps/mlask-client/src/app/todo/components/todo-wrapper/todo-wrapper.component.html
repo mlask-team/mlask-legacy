@@ -1,5 +1,2 @@
-<div>
-  <mlsk-checklist-item *ngFor="let t of todos$ | async" class="mlsk-checklist-item" [text]="t.title"></mlsk-checklist-item>
-</div>
-
-<button id="add-todo" (click)="onClick()">Add Todo</button>
+<h2>{{todoList.title}}</h2>
+<mlsk-checklist class="mlsk-checklist-item" [data]="todoList.items | toChecklist" (dataChange)="onDataChange($event)"></mlsk-checklist>

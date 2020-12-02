@@ -18,7 +18,13 @@ export class ChecklistComponent {
   inputs!: QueryList<CameleonInputComponent>;
 
   @Input() set data(data: ChecklistData[]) {
-    this.formArray.patchValue(data);
+    // set value only once as a workaround
+    // TODO: probably needs custom patchValue logic
+    if (data && data.length && this.formArray.length < 2) {
+      this.formArray.clear();
+      data.forEach(() => this.addNew());
+      this.formArray.patchValue(data);
+    }
   }
 
   @Output() dataChange = new EventEmitter<ChecklistData[]>();
@@ -57,7 +63,7 @@ export class ChecklistComponent {
   private addLastEmptyRow() {
     const controls = this.formArray.controls;
     const control = controls[controls.length-1];
-    if (control.value['text'] !== '') {
+    if (!control || control.value['text'] !== '') {
       this.addNew();
     }
   }

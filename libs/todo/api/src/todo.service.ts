@@ -22,7 +22,10 @@ export class TodoService {
   updateTodo(id: string, item: CreateTodoListDto) {
     const match = this.todos.find(todo => todo.id === id);
     if (!match) throw new HttpException('Not Found', HttpStatus.NOT_FOUND);
-    Object.assign(match)
+    Object.keys(item).forEach(function(key) {
+      match[key] = item[key];
+    });
+    return match;
   }
 
   deleteTodo(id: string) {

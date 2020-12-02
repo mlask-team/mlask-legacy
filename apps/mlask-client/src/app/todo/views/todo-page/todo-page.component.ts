@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TodoList } from '@mlsk/todo/models';
+import { TodoFacade } from '@mlsk/todo/state';
 
 @Component({
   selector: 'mlsk-todo-page',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo-page.component.scss']
 })
 export class TodoPageComponent implements OnInit {
+  todos$ = this.todos.allTodo$;
 
-  constructor() { }
+  constructor(private todos: TodoFacade) { }
 
   ngOnInit(): void {
+    this.todos.fetch();
   }
 
+  onClick() {
+    this.todos.add({ title: 'test', items: [] });
+  }
+
+  identify(index: number, item: TodoList) {
+    return item.id;
+  }
 }

@@ -1,3 +1,7 @@
 <h1>Todos</h1>
 
-<mlsk-todo-wrapper></mlsk-todo-wrapper>
+<div *ngFor="let todoList of todos$ | async; trackBy:identify">
+  <mlsk-todo-wrapper [todoList] = "todoList"></mlsk-todo-wrapper>
+</div>
+
+<button id="add-todo" (click)="onClick()">Add Todo</button>
