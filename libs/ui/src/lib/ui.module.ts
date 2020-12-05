@@ -5,11 +5,13 @@ import { CameleonInputComponent } from './cameleon-input/cameleon-input.componen
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { ChecklistComponent } from './checklist/checklist.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { CardComponent } from './card/card.component';
 
 const components = [
   CameleonInputComponent,
   CheckboxComponent,
   ChecklistComponent,
+  CardComponent,
 ];
 
 @NgModule({

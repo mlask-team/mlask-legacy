@@ -1,0 +1,8 @@
+@import '~@mlsk/theme/styles/mixins';
+@import '~@mlsk/theme/styles/colors';
+
+.card {
+  @include round-corners-xl();
+  background: $white;
+  padding: 40px;
+}

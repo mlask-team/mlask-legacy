@@ -1,5 +1,5 @@
 <div cdkDropList (cdkDropListDropped)="dropped($event)" [cdkDropListSortPredicate]="sortPredicate">
-  <div class="row" *ngFor="let group of formArray.controls; let idx = index" cdkDrag>
+  <div class="row" *ngFor="let group of formArray.controls; let idx = index" cdkDrag cdkDragLockAxis="y">
     <mlsk-checkbox
       [formControl]="group.get('checked')"
       [empty]="!group.get('text').value"

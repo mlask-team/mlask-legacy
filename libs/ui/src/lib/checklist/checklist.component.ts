@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output, QueryList, ViewChildren } from 
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { CameleonInputComponent } from '../cameleon-input/cameleon-input.component';
 import { delay, take } from 'rxjs/operators';
-import { CdkDrag, CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 export interface ChecklistData {
   checked: boolean;
@@ -77,7 +77,7 @@ export class ChecklistComponent {
   private onRowListChanged() {
     return this.inputs.changes.pipe(
       take(1),
-      delay(1),
+      delay(0),
     );
   }
 
