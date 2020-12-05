@@ -37,11 +37,15 @@ export class ChecklistComponent {
     // setup listeners on changes
     this.formArray.valueChanges.subscribe((data: ChecklistData[]) => {
       this.addLastEmptyRow();
-      const notEmpty = data.filter(entry => !!entry.text);
-      this.dataChange.emit(notEmpty);
+      this.emitChangedValue(data);
     });
     // add first element
     this.addNew();
+  }
+
+  private emitChangedValue(data: ChecklistData[]) {
+    const notEmpty = data.filter(entry => !!entry.text);
+    this.dataChange.emit(notEmpty);
   }
 
   private addNew() {

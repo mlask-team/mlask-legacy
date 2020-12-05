@@ -313,6 +313,36 @@
           }
         }
       }
+    },
+    "todo/feature": {
+      "projectType": "library",
+      "root": "libs/todo/feature",
+      "sourceRoot": "libs/todo/feature/src",
+      "prefix": "mlsk",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/todo/feature/tsconfig.lib.json",
+              "libs/todo/feature/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/todo/feature/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/todo/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

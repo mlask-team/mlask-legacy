@@ -6,5 +6,6 @@ module.exports = {
     '<rootDir>/libs/todo/state',
     '<rootDir>/libs/gateways',
     '<rootDir>/libs/todo/api',
+    '<rootDir>/libs/todo/feature',
   ],
 };
