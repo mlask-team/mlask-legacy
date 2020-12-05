@@ -1,4 +1,32 @@
+@import '~@mlsk/theme/styles/mixins';
+@import '~@mlsk/theme/styles/colors';
+
 .row {
   display: flex;
-  margin-bottom: 6px;
+  margin-bottom: 2px;
+  width: max-content;
+  padding: 8px 0 0 8px ;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.5;
+}
+
+.cdk-drop-list-dragging .cdk-drag {
+  transition: transform 500ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-preview {
+  @include shadow();
+  background: inherit;
+}
+
+.row-handle {
+  cursor: pointer;
+  fill: $dark-alt;
+
+  &.hidden {
+    visibility: hidden;
+    pointer-events: none;
+  }
 }

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output, QueryList, ViewChildren } from 
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { CameleonInputComponent } from '../cameleon-input/cameleon-input.component';
 import { delay, take } from 'rxjs/operators';
+import { CdkDrag, CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 export interface ChecklistData {
   checked: boolean;
@@ -119,5 +120,20 @@ export class ChecklistComponent {
     this.onRowListChanged().subscribe(() => {
       this.setFocus(index + 1);
     });
+  }
+
+  dropped(event: CdkDragDrop<string[]>) {
+    const items = this.formArray.value;
+    if (event.currentIndex === items.length-1) return;
+    moveItemInArray(
+      items, 
+      event.previousIndex, 
+      event.currentIndex
+    );
+    this.formArray.patchValue(items);
+  }
+
+  sortPredicate = (index: number) => {
+    return index !== this.formArray?.controls.length-1;
   }
 }

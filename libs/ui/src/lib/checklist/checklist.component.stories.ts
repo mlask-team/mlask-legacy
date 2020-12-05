@@ -4,6 +4,7 @@ import { ChecklistComponent } from './checklist.component';
 import { CameleonInputComponent } from '../cameleon-input/cameleon-input.component';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 export default {
   title: 'ChecklistComponent',
@@ -18,6 +19,7 @@ export default {
       imports: [
         FormsModule,
         ReactiveFormsModule,
+        DragDropModule,
       ],
     }),
     withKnobs,

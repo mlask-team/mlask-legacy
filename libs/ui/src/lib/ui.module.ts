@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CameleonInputComponent } from './cameleon-input/cameleon-input.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { ChecklistComponent } from './checklist/checklist.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 const components = [
   CameleonInputComponent,
@@ -16,6 +17,7 @@ const components = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    DragDropModule,
   ],
   declarations: components,
   exports: components,

@@ -20,8 +20,8 @@
   },
   "private": true,
   "dependencies": {
-    "@mlsk/theme": "file:libs/theme",
     "@angular/animations": "^10.1.0",
+    "@angular/cdk": "^11.0.1",
     "@angular/common": "^10.1.0",
     "@angular/compiler": "^10.1.0",
     "@angular/core": "^10.1.0",
@@ -29,6 +29,7 @@
     "@angular/platform-browser": "^10.1.0",
     "@angular/platform-browser-dynamic": "^10.1.0",
     "@angular/router": "^10.1.0",
+    "@mlsk/theme": "file:libs/theme",
     "@nestjs/common": "^7.0.0",
     "@nestjs/core": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
