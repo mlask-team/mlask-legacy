@@ -39,6 +39,7 @@
     "@ngrx/store": "^10.0.1",
     "@ngrx/store-devtools": "^10.0.1",
     "@nrwl/angular": "10.3.1",
+    "lodash": "^4.17.20",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.5",
     "zone.js": "^0.10.2"
@@ -63,6 +64,7 @@
     "@storybook/addon-knobs": "^6.0.21",
     "@storybook/angular": "^6.0.21",
     "@types/jest": "26.0.8",
+    "@types/lodash": "^4.14.165",
     "@types/node": "~8.9.4",
     "@types/webpack": "4.41.21",
     "codelyzer": "~5.0.1",

@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, Output, QueryList, ViewChildren } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup } from '@angular/forms';
 import { CameleonInputComponent } from '../cameleon-input/cameleon-input.component';
-import { delay, take } from 'rxjs/operators';
+import { delay, distinctUntilChanged, map, take, tap } from 'rxjs/operators';
+import { isEqual } from 'lodash';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 export interface ChecklistData {
@@ -19,13 +20,14 @@ export class ChecklistComponent {
   inputs!: QueryList<CameleonInputComponent>;
 
   @Input() set data(data: ChecklistData[]) {
-    // set value only once as a workaround
-    // TODO: probably needs custom patchValue logic
-    if (data && data.length && this.formArray.length < 2) {
-      this.formArray.clear();
-      data.forEach(() => this.addNew());
-      this.formArray.patchValue(data);
-    }
+    // skip input update if value not changed
+    if (isEqual(data, this.formArray.value.filter(entry => !!entry.text))) return;
+    // // NOTE: it's a hack: this.formArray.clear(); but without event emit
+    this.formArray['_forEachChild']((control: AbstractControl) => control['_registerOnCollectionChange'](() => {}));
+    this.formArray.controls.splice(0);
+    data.forEach(() => this.addNew());
+    this.formArray.patchValue(data, { emitEvent: false });
+    this.addLastEmptyRow();
   }
 
   @Output() dataChange = new EventEmitter<ChecklistData[]>();
@@ -35,27 +37,29 @@ export class ChecklistComponent {
   constructor() {
     this.formArray = new FormArray([]);
     // setup listeners on changes
-    this.formArray.valueChanges.subscribe((data: ChecklistData[]) => {
-      this.addLastEmptyRow();
-      this.emitChangedValue(data);
+    this.formArray.valueChanges.pipe(
+      tap(() => this.addLastEmptyRow()),
+      map(data => data.filter(entry => !!entry.text)),
+      distinctUntilChanged((x, y) => isEqual(x, y)),
+    ).subscribe((data: ChecklistData[]) => {
+      this.dataChange.emit(data);
     });
     // add first element
     this.addNew();
   }
 
-  private emitChangedValue(data: ChecklistData[]) {
-    const notEmpty = data.filter(entry => !!entry.text);
-    this.dataChange.emit(notEmpty);
-  }
-
   private addNew() {
     const newFormGroup = this.newRow();
-    this.formArray.push(newFormGroup);
+    // NOTE: it's a hack: this.formArray.push(newFormGroup); but without event emit
+    this.formArray.controls.push(newFormGroup);
+    this.formArray['_registerControl'](newFormGroup);
   }
 
   private insertNewAt(index: number) {
     const newFormGroup = this.newRow();
-    this.formArray.insert(index, newFormGroup);
+    // NOTE: it's a hack: this.formArray.insert(index, newFormGroup); but without event emit
+    this.formArray.controls.splice(index, 0, newFormGroup);
+    this.formArray['_registerControl'](newFormGroup);
   }
 
   private newRow(): FormGroup {
