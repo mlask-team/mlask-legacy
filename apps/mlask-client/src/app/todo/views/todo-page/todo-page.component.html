@@ -3,6 +3,6 @@
   <button id="add-todo" (click)="onClick()">Add Todo</button>
 </div>
 
-<div class="editor-row" *ngFor="let todoList of todos$ | async; trackBy:identify">
+<div class="editor-row" *ngFor="let todoList of todos$ | async | reverse; trackBy:identify">
   <mlsk-todolist-editor [todoList] = "todoList"></mlsk-todolist-editor>
 </div>

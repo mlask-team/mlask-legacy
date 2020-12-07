@@ -17,6 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@mlsk/ui": ["libs/ui/src/index.ts"],
+      "@mlsk/utils/angular": ["libs/utils/angular/src/index.ts"],
+      "@mlsk/utils/nest": ["libs/utils/nest/src/index.ts"],
       "@mlsk/todo/models": ["libs/todo/models/src/index.ts"],
       "@mlsk/todo/state": ["libs/todo/state/src/index.ts"],
       "@mlsk/todo/api": ["libs/todo/api/src/index.ts"],

@@ -39,6 +39,15 @@
     "mlask-api": {
       "tags": []
     },
+    "ui": {
+      "tags": []
+    },
+    "utils/angular": {
+      "tags": []
+    },
+    "utils/nest": {
+      "tags": []
+    },
     "todo/models": {
       "tags": []
     },
@@ -49,9 +58,6 @@
       "tags": []
     },
     "todo/feature": {
-      "tags": []
-    },
-    "ui": {
       "tags": []
     }
   }

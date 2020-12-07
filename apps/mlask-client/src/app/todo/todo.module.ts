@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { UtilsAngularModule } from '@mlsk/utils/angular';
 import { UiModule } from '@mlsk/ui';
 import { TodoStateModule } from '@mlsk/todo/state';
 import { TodoFeatureModule } from '@mlsk/todo/feature';
@@ -13,6 +15,7 @@ import { TodoRoutingModule } from './todo-routing.module';
   ],
   imports: [
     CommonModule,
+    UtilsAngularModule,
     UiModule,
     TodoRoutingModule,
     TodoStateModule,

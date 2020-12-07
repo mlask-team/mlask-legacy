@@ -1,5 +1,5 @@
-import { CreateTodoListDto } from '@mlsk/todo/models';
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { CreateTodoListDto } from '@mlsk/todo/models';
 import { TodoService } from './todo.service';
 
 @Controller('todo')
