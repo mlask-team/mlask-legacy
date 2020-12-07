@@ -13,6 +13,8 @@ Libs
 
 - *theme* - shared assets and scss files.
 - *ui* - shared module containing all basic UI components. Components are documented with Storybook.
+- *utils/angular* - utils for angular apps.
+- *utils/nest* - utils for nest apps.
 - *{feature}/api* - all backend logic related to domain of this feature.
 - *{feature}/models* - interfaces for API's DTOs of the feature.
 - *{feature}/state* - set of NGRX feature modules encapsulating all business logic and state management. All implementation details are hidden behind facades.
@@ -28,11 +30,11 @@ Run `npm run serve:api` for a api server. Api runs on http://localhost:3333/ but
 
 Run `npm run start:all` to run both client and api.
 
-## Running tasks
+## Development using Nx
+
+### Running tasks
 
 We recommend [Nx Console](https://nx.dev/latest/angular/cli/console) plugin to run tasks related to each app and lib.
-
-## Development using Nx
 
 ### Generate a library
 
