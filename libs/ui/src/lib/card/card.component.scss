@@ -3,6 +3,7 @@
 
 .card {
   @include round-corners-xl();
+  @include shadow();
   background: $white;
   padding: 40px;
 }

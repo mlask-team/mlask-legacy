@@ -17,7 +17,7 @@ export class TodoPageComponent implements OnInit {
   }
 
   onClick() {
-    this.todos.add({ title: 'test', items: [] });
+    this.todos.add({ title: '', items: [] });
   }
 
   identify(index: number, item: TodoList) {

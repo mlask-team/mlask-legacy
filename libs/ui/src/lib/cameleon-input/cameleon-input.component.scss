@@ -1,4 +1,5 @@
 @import "~@mlsk/theme/styles/colors";
+@import "~@mlsk/theme/styles/typography";
 
 $animate: all 0.25s ease-in-out;
 
@@ -40,5 +41,13 @@ input {
     &::placeholder {
       opacity: 0;
     }
+  }
+}
+
+:host-context(h2) input {
+  @include h2();
+  color: $blue;
+  &::placeholder {
+    @include h2();
   }
 }

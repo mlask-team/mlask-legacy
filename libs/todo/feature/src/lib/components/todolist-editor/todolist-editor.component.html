@@ -1,4 +1,6 @@
 <mlsk-card>
-  <h2>{{todoList.title}}</h2>
+  <h2>
+    <mlsk-cameleon-input [formControl]="todoName" placeholder="New List"></mlsk-cameleon-input>
+  </h2>
   <mlsk-checklist class="mlsk-checklist-item" [data]="todoList.items | toChecklist" (dataChange)="onDataChange($event)"></mlsk-checklist>
 </mlsk-card>

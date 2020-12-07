@@ -1,9 +1,10 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { TodoList } from '@mlsk/todo/models';
 import { TodoFacade } from '@mlsk/todo/state';
 import { ChecklistData } from '@mlsk/ui';
-import { Subject } from 'rxjs';
-import { debounceTime, takeUntil } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'mlsk-todolist-editor',
@@ -11,25 +12,39 @@ import { debounceTime, takeUntil } from 'rxjs/operators';
   styleUrls: ['./todolist-editor.component.scss']
 })
 export class TodoListEditorComponent implements OnInit, OnDestroy {
-  @Input() todoList: TodoList;
-  onChangeSubject = new Subject<ChecklistData[]>();
+  _todoList: TodoList;
+  @Input() set todoList(todoList: TodoList) {
+    this._todoList = todoList;
+    this.todoName.setValue(todoList.title);
+  }
+  get todoList() {
+    return this._todoList;
+  }
+
+  onChangeSubject = new BehaviorSubject<ChecklistData[]>([]);
 
   destroyed = new Subject<boolean>();
+  todoName = new FormControl('');
 
   constructor(private todos: TodoFacade) { }
 
   ngOnInit(): void {
-    this.onChangeSubject.pipe(
+    combineLatest([
+      this.todoName.valueChanges.pipe(distinctUntilChanged()),
+      this.onChangeSubject,
+    ])
+    .pipe(
       takeUntil(this.destroyed),
       debounceTime(2000),
-    ).subscribe(data => {
-      this.dispatchUpdate(data);
+    ).subscribe(([name, data]) => {
+      this.dispatchUpdate(name, data);
     });
   }
 
-  dispatchUpdate(data: ChecklistData[]) {
+  dispatchUpdate(title: string, data: ChecklistData[]) {
     this.todos.update({
       ...this.todoList,
+      title,
       items: data.map((row, index) => ({
         order: index,
         title: row.text,
