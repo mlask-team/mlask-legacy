@@ -15,7 +15,10 @@ export class TodoListEditorComponent implements OnInit, OnDestroy {
   _todoList: TodoList;
   @Input() set todoList(todoList: TodoList) {
     this._todoList = todoList;
-    this.todoName.setValue(todoList.title, { emitEvent: false });
+    if (todoList.title !== this.todoName.value || !this.shouldEmit) {
+      this.todoName.setValue(todoList.title, { emitEvent: this.shouldEmit });
+      this.shouldEmit = true;
+    }
   }
   get todoList() {
     return this._todoList;
@@ -24,6 +27,7 @@ export class TodoListEditorComponent implements OnInit, OnDestroy {
   onChangeSubject = new Subject<ChecklistData[]>();
   destroyed = new Subject<boolean>();
   todoName = new FormControl('');
+  shouldEmit = false; // don't emit on first set up of input
 
   constructor(private todos: TodoFacade) { }
 

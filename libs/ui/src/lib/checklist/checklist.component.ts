@@ -26,13 +26,15 @@ export class ChecklistComponent {
     this.formArray['_forEachChild']((control: AbstractControl) => control['_registerOnCollectionChange'](() => {}));
     this.formArray.controls.splice(0);
     data.forEach(() => this.addNew());
-    this.formArray.patchValue(data, { emitEvent: false });
+    this.formArray.patchValue(data, { emitEvent: this.shouldEmit });
     this.addLastEmptyRow();
+    this.shouldEmit = true;
   }
 
   @Output() dataChange = new EventEmitter<ChecklistData[]>();
 
   formArray: FormArray;
+  shouldEmit = false; // don't emit on first set up of input
 
   constructor() {
     this.formArray = new FormArray([]);
