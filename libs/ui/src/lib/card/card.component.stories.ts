@@ -1,10 +1,5 @@
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { withKnobs } from '@storybook/addon-knobs';
-import { CameleonInputComponent } from '../cameleon-input/cameleon-input.component';
-import { CheckboxComponent } from '../checkbox/checkbox.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DragDropModule } from '@angular/cdk/drag-drop';
-import { ChecklistComponent } from '../checklist/checklist.component';
 import { CardComponent } from './card.component';
 
 export default {
@@ -14,14 +9,8 @@ export default {
     moduleMetadata({
       declarations: [
         CardComponent,
-        ChecklistComponent,
-        CheckboxComponent,
-        CameleonInputComponent,
       ],
       imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        DragDropModule,
       ],
     }),
     withKnobs,

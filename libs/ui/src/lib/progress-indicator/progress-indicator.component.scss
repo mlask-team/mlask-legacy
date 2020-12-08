@@ -1,0 +1,28 @@
+@import '~@mlsk/theme/styles/colors';
+
+.progress-indicator {
+  position: fixed;
+  bottom: 0;
+  height: 5px;
+  background: $carrot;
+  
+  animation: progress 2s ease infinite;
+}
+
+@keyframes progress {
+  0%   {
+    background-color: $carrot;
+    left: 0;
+    width: 0;
+  }
+  30% {
+    width: 50%;
+  }
+  90% {
+    left: 100%;
+  }
+  100% {
+    background-color: $orange;
+    width: 0;
+  }
+}
