@@ -9,7 +9,7 @@ Apps
 - *mlask-api* - restful backend for Mlask App. Powered by NestJs.
 - *mlask-client* - frontend for Mlask App. Powered by Angular.
 
-Libs
+Libs - basic structure
 
 - *theme* - shared assets and scss files.
 - *ui* - shared module containing all basic UI components. Components are documented with Storybook.
@@ -19,6 +19,7 @@ Libs
 - *{feature}/models* - interfaces for API's DTOs of the feature.
 - *{feature}/state* - set of NGRX feature modules encapsulating all business logic and state management. All implementation details are hidden behind facades.
 - *{feature}/feature* - set of Angular components of the feature.
+- *shared/{feature}* - shared features.
 
 As you can see, this project has a set of libraries for every of its feature. This helps to keep all code related to one domain in one folder and follow the best DDD practices.
 

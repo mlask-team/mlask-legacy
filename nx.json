@@ -59,6 +59,9 @@
     },
     "todo/feature": {
       "tags": []
+    },
+    "shared/loader": {
+      "tags": []
     }
   }
 }

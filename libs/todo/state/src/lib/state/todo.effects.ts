@@ -20,7 +20,6 @@ export class TodoEffects {
             map(todos => ( TodoActions.loadTodoSuccess({ todos }) ))
           );
         },
-
         onError: (action, error) => {
           console.error('Error', error);
           return TodoActions.loadTodoFailure({ error });

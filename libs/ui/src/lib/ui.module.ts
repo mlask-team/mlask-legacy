@@ -7,12 +7,14 @@ import { CameleonInputComponent } from './cameleon-input/cameleon-input.componen
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { ChecklistComponent } from './checklist/checklist.component';
 import { CardComponent } from './card/card.component';
+import { ProgressIndicatorComponent } from './progress-indicator/progress-indicator.component';
 
 const components = [
   CameleonInputComponent,
   CheckboxComponent,
   ChecklistComponent,
   CardComponent,
+  ProgressIndicatorComponent,
 ];
 
 @NgModule({

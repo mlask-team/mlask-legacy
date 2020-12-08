@@ -1,11 +1,13 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, Optional } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { TodoList } from '@mlsk/todo/models';
 import { TodoFacade } from '@mlsk/todo/state';
 import { ChecklistData } from '@mlsk/ui';
 import { combineLatest, Subject } from 'rxjs';
-import { debounceTime, skip, startWith, takeUntil } from 'rxjs/operators';
+import { debounceTime, skip, startWith, takeUntil, tap } from 'rxjs/operators';
+import { GlobalLoaderService } from '@mlsk/shared/loader';
 
+// TODO: consider adding id to GlobalLoaderService by NgRx effects instead of explicit dependecy here
 @Component({
   selector: 'mlsk-todolist-editor',
   templateUrl: './todolist-editor.component.html',
@@ -15,6 +17,7 @@ export class TodoListEditorComponent implements OnInit, OnDestroy {
   _todoList: TodoList;
   @Input() set todoList(todoList: TodoList) {
     this._todoList = todoList;
+    this.globalLoaderService?.pop(this.todoList.id)
     if (todoList.title !== this.todoName.value || !this.shouldEmit) {
       this.todoName.setValue(todoList.title, { emitEvent: this.shouldEmit });
       this.shouldEmit = true;
@@ -29,7 +32,10 @@ export class TodoListEditorComponent implements OnInit, OnDestroy {
   todoName = new FormControl('');
   shouldEmit = false; // don't emit on first set up of input
 
-  constructor(private todos: TodoFacade) { }
+  constructor(
+    private todos: TodoFacade,
+    @Optional() private globalLoaderService: GlobalLoaderService,
+  ) { }
 
   ngOnInit(): void {
     combineLatest([
@@ -43,6 +49,7 @@ export class TodoListEditorComponent implements OnInit, OnDestroy {
     .pipe(
       skip(1),
       takeUntil(this.destroyed),
+      tap(() => this.globalLoaderService?.push(this.todoList.id)),
       debounceTime(2000),
     ).subscribe(([name, data]) => {
       this.dispatchUpdate(name, data);
