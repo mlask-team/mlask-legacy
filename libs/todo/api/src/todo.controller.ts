@@ -1,7 +1,9 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { CreateTodoListDto } from '@mlsk/todo/models';
 import { TodoService } from './todo.service';
 
+@ApiTags('Todo')
 @Controller('todo')
 export class TodoController {
   constructor(private readonly appService: TodoService) {}
