@@ -34,7 +34,9 @@
     },
     "mlask-client-e2e": {
       "tags": [],
-      "implicitDependencies": ["mlask-client"]
+      "implicitDependencies": [
+        "mlask-client"
+      ]
     },
     "mlask-api": {
       "tags": []
@@ -62,6 +64,12 @@
     },
     "shared/loader": {
       "tags": []
+    },
+    "mlask-desktop": {
+      "tags": [],
+      "implicitDependencies": [
+        "mlask-client"
+      ]
     }
   }
 }

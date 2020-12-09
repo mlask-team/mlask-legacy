@@ -30,7 +30,9 @@
                 "output": "./assets"
               }
             ],
-            "styles": ["libs/theme/styles/styles.scss"],
+            "styles": [
+              "libs/theme/styles/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -90,7 +92,10 @@
               "apps/mlask-client/tsconfig.spec.json",
               "apps/mlask-client/tsconfig.editor.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/mlask-client/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/mlask-client/**/*"
+            ]
           }
         },
         "test": {
@@ -123,8 +128,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/mlask-client-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/mlask-client-e2e/**/*"]
+            "tsConfig": [
+              "apps/mlask-client-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/mlask-client-e2e/**/*"
+            ]
           }
         }
       }
@@ -143,7 +153,10 @@
               "libs/ui/tsconfig.spec.json",
               "libs/ui/.storybook/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/ui/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ui/**/*"
+            ]
           }
         },
         "test": {
@@ -203,7 +216,9 @@
             "outputPath": "dist/apps/mlask-api",
             "main": "apps/mlask-api/src/main.ts",
             "tsConfig": "apps/mlask-api/tsconfig.app.json",
-            "assets": ["apps/mlask-api/src/assets"]
+            "assets": [
+              "apps/mlask-api/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -232,7 +247,10 @@
               "apps/mlask-api/tsconfig.app.json",
               "apps/mlask-api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/mlask-api/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/mlask-api/**/*"
+            ]
           }
         },
         "test": {
@@ -253,8 +271,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/todo/models/tsconfig.lib.json"],
-            "exclude": ["**/node_modules/**", "!libs/todo/models/**/*"]
+            "tsConfig": [
+              "libs/todo/models/tsconfig.lib.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/todo/models/**/*"
+            ]
           }
         }
       }
@@ -272,7 +295,10 @@
               "libs/todo/state/tsconfig.lib.json",
               "libs/todo/state/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/todo/state/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/todo/state/**/*"
+            ]
           }
         },
         "test": {
@@ -302,7 +328,10 @@
               "libs/todo/api/tsconfig.lib.json",
               "libs/todo/api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/todo/api/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/todo/api/**/*"
+            ]
           }
         },
         "test": {
@@ -327,7 +356,10 @@
               "libs/todo/feature/tsconfig.lib.json",
               "libs/todo/feature/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/todo/feature/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/todo/feature/**/*"
+            ]
           }
         },
         "test": {
@@ -357,7 +389,10 @@
               "libs/utils/angular/tsconfig.lib.json",
               "libs/utils/angular/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/utils/angular/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/utils/angular/**/*"
+            ]
           }
         },
         "test": {
@@ -387,7 +422,10 @@
               "libs/utils/nest/tsconfig.lib.json",
               "libs/utils/nest/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/utils/nest/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/utils/nest/**/*"
+            ]
           }
         },
         "test": {
@@ -412,7 +450,10 @@
               "libs/shared/loader/tsconfig.lib.json",
               "libs/shared/loader/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/loader/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/loader/**/*"
+            ]
           }
         },
         "test": {
@@ -426,6 +467,81 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
+        }
+      }
+    },
+    "mlask-desktop": {
+      "root": "apps/mlask-desktop",
+      "sourceRoot": "apps/mlask-desktop/src",
+      "projectType": "application",
+      "prefix": "mlask-desktop",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "nx-electron:build",
+          "options": {
+            "outputPath": "dist/apps/mlask-desktop",
+            "main": "apps/mlask-desktop/src/main.ts",
+            "tsConfig": "apps/mlask-desktop/tsconfig.app.json",
+            "assets": [
+              "apps/mlask-desktop/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/mlask-desktop/src/environments/environment.ts",
+                  "with": "apps/mlask-desktop/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "nx-electron:execute",
+          "options": {
+            "buildTarget": "mlask-desktop:build"
+          }
+        },
+        "package": {
+          "builder": "nx-electron:package",
+          "options": {
+            "name": "mlask-desktop",
+            "frontendProject": "mlask-client",
+            "out": "dist/packages"
+          }
+        },
+        "make": {
+          "builder": "nx-electron:make",
+          "options": {
+            "name": "mlask-desktop",
+            "frontendProject": "mlask-client",
+            "out": "dist/executables"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/mlask-desktop/tsconfig.app.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/mlask-desktop/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/mlask-desktop/jest.config.js",
+            "passWithNoTests": true
+          }
         }
       }
     }

@@ -16,7 +16,7 @@
     "affected:lint": "nx affected:lint",
     "affected:dep-graph": "nx affected:dep-graph",
     "dep-graph": "nx dep-graph",
-    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+    "postinstall": "exitzero electron-builder install-app-deps"
   },
   "private": true,
   "dependencies": {
@@ -73,10 +73,17 @@
     "eslint": "7.10.0",
     "jest": "26.2.2",
     "jest-preset-angular": "8.3.1",
+    "nx-electron": "^9.3.2",
     "prettier": "2.0.4",
     "ts-jest": "26.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
-    "typescript": "~4.0.3"
+    "typescript": "~4.0.3",
+    "electron": "^7.1.0",
+    "exitzero": "^1.0.1",
+    "@nrwl/eslint-plugin-nx": "9.8.0",
+    "@typescript-eslint/parser": "2.19.2",
+    "@typescript-eslint/eslint-plugin": "2.19.2",
+    "eslint-config-prettier": "6.0.0"
   }
 }
