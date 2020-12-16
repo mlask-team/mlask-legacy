@@ -68,6 +68,10 @@ export class TodoListEditorComponent implements OnInit, OnDestroy {
     });
   }
 
+  onDelete() {
+    this.todos.delete(this.todoList);
+  }
+
   onDataChange(data: ChecklistData[]) {
     this.onChangeSubject.next(data)
   }

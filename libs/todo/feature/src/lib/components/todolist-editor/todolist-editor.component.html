@@ -3,4 +3,5 @@
     <mlsk-cameleon-input [formControl]="todoName" placeholder="New List"></mlsk-cameleon-input>
   </h2>
   <mlsk-checklist class="mlsk-checklist-item" [data]="todoList.items | toChecklist" (dataChange)="onDataChange($event)"></mlsk-checklist>
+  <button id="delete-todo" (click)="onDelete()">Delete</button>
 </mlsk-card>
