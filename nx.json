@@ -64,12 +64,6 @@
     },
     "shared/loader": {
       "tags": []
-    },
-    "mlask-desktop": {
-      "tags": [],
-      "implicitDependencies": [
-        "mlask-client"
-      ]
     }
   }
 }

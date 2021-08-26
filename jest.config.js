@@ -8,6 +8,6 @@ module.exports = {
     '<rootDir>/libs/todo/feature',
     '<rootDir>/libs/utils/angular',
     '<rootDir>/libs/utils/nest',
-    '<rootDir>/libs/shared/loader',"<rootDir>/apps/mlask-desktop"
+    '<rootDir>/libs/shared/loader',
   ],
 };

@@ -15,6 +15,7 @@ import { AppStateModule } from './app-state.module';
     HttpClientModule,
     AppRoutingModule,
     AppStateModule,
+
     SharedLoaderModule,
   ],
   providers: [],
