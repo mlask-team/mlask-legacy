@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
-import { fetch, optimisticUpdate } from '@nrwl/angular';
 
 import * as fromTodo from './todo.reducer';
 import * as TodoActions from './todo.actions';
@@ -8,6 +7,7 @@ import * as TodoSelectors from './todo.selectors';
 import { map, pairwise, withLatestFrom } from 'rxjs/operators';
 import { TodoGatewayService } from '../gateway/todo-gateway.service';
 import { select, Store } from '@ngrx/store';
+import { fetch, optimisticUpdate } from '@nrwl/angular';
 
 @Injectable()
 export class TodoEffects {

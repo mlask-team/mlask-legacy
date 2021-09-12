@@ -1,5 +1,8 @@
+const { getJestProjects } = require('@nrwl/jest');
+
 module.exports = {
   projects: [
+    ...getJestProjects(),
     '<rootDir>/apps/mlask-api',
     '<rootDir>/apps/mlask-client',
     '<rootDir>/libs/ui',

@@ -1,6 +1,71 @@
 {
   "version": 1,
   "projects": {
+    "mlask-api": {
+      "root": "apps/mlask-api",
+      "sourceRoot": "apps/mlask-api/src",
+      "projectType": "application",
+      "prefix": "mlask-api",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/mlask-api",
+            "main": "apps/mlask-api/src/main.ts",
+            "tsConfig": "apps/mlask-api/tsconfig.app.json",
+            "assets": [
+              "apps/mlask-api/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/mlask-api/src/environments/environment.ts",
+                  "with": "apps/mlask-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          },
+          "outputs": [
+            "{options.outputPath}"
+          ]
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "mlask-api:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/mlask-api/tsconfig.app.json",
+              "apps/mlask-api/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/mlask-api/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/mlask-api/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": [
+            "coverage/apps/mlask-api"
+          ]
+        }
+      }
+    },
     "mlask-client": {
       "projectType": "application",
       "schematics": {
@@ -46,7 +111,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -64,7 +128,10 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -103,7 +170,10 @@
           "options": {
             "jestConfig": "apps/mlask-client/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/apps/mlask-client"
+          ]
         }
       }
     },
@@ -139,31 +209,34 @@
         }
       }
     },
-    "ui": {
+    "shared/loader": {
       "projectType": "library",
-      "root": "libs/ui",
-      "sourceRoot": "libs/ui/src",
+      "root": "libs/shared/loader",
+      "sourceRoot": "libs/shared/loader/src",
       "prefix": "mlsk",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/ui/tsconfig.lib.json",
-              "libs/ui/tsconfig.spec.json"
+              "libs/shared/loader/tsconfig.lib.json",
+              "libs/shared/loader/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/ui/**/*"
+              "!libs/shared/loader/**/*"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/ui/jest.config.js",
+            "jestConfig": "libs/shared/loader/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/shared/loader"
+          ]
         }
       },
       "schematics": {
@@ -172,62 +245,70 @@
         }
       }
     },
-    "mlask-api": {
-      "root": "apps/mlask-api",
-      "sourceRoot": "apps/mlask-api/src",
-      "projectType": "application",
-      "prefix": "mlask-api",
+    "todo/api": {
+      "root": "libs/todo/api",
+      "sourceRoot": "libs/todo/api/src",
+      "projectType": "library",
       "schematics": {},
       "architect": {
-        "build": {
-          "builder": "@nrwl/node:build",
-          "options": {
-            "outputPath": "dist/apps/mlask-api",
-            "main": "apps/mlask-api/src/main.ts",
-            "tsConfig": "apps/mlask-api/tsconfig.app.json",
-            "assets": [
-              "apps/mlask-api/src/assets"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/mlask-api/src/environments/environment.ts",
-                  "with": "apps/mlask-api/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "mlask-api:build"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/mlask-api/tsconfig.app.json",
-              "apps/mlask-api/tsconfig.spec.json"
+              "libs/todo/api/tsconfig.lib.json",
+              "libs/todo/api/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!apps/mlask-api/**/*"
+              "!libs/todo/api/**/*"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/mlask-api/jest.config.js",
+            "jestConfig": "libs/todo/api/jest.config.js",
             "passWithNoTests": true
+          },
+          "outputs": [
+            "coverage/libs/todo/api"
+          ]
+        }
+      }
+    },
+    "todo/feature": {
+      "projectType": "library",
+      "root": "libs/todo/feature",
+      "sourceRoot": "libs/todo/feature/src",
+      "prefix": "mlsk",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/todo/feature/tsconfig.lib.json",
+              "libs/todo/feature/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/todo/feature/**/*"
+            ]
           }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/todo/feature/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": [
+            "coverage/libs/todo/feature"
+          ]
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
         }
       }
     },
@@ -275,7 +356,10 @@
           "options": {
             "jestConfig": "libs/todo/state/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/todo/state"
+          ]
         }
       },
       "schematics": {
@@ -284,59 +368,34 @@
         }
       }
     },
-    "todo/api": {
-      "root": "libs/todo/api",
-      "sourceRoot": "libs/todo/api/src",
+    "ui": {
       "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/todo/api/tsconfig.lib.json",
-              "libs/todo/api/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/todo/api/**/*"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/todo/api/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "todo/feature": {
-      "projectType": "library",
-      "root": "libs/todo/feature",
-      "sourceRoot": "libs/todo/feature/src",
+      "root": "libs/ui",
+      "sourceRoot": "libs/ui/src",
       "prefix": "mlsk",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/todo/feature/tsconfig.lib.json",
-              "libs/todo/feature/tsconfig.spec.json"
+              "libs/ui/tsconfig.lib.json",
+              "libs/ui/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/todo/feature/**/*"
+              "!libs/ui/**/*"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/todo/feature/jest.config.js",
+            "jestConfig": "libs/ui/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/ui"
+          ]
         }
       },
       "schematics": {
@@ -369,7 +428,10 @@
           "options": {
             "jestConfig": "libs/utils/angular/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/utils/angular"
+          ]
         }
       },
       "schematics": {
@@ -402,40 +464,10 @@
           "options": {
             "jestConfig": "libs/utils/nest/jest.config.js",
             "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "shared/loader": {
-      "projectType": "library",
-      "root": "libs/shared/loader",
-      "sourceRoot": "libs/shared/loader/src",
-      "prefix": "mlsk",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/shared/loader/tsconfig.lib.json",
-              "libs/shared/loader/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/shared/loader/**/*"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/shared/loader/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
+          },
+          "outputs": [
+            "coverage/libs/utils/nest"
+          ]
         }
       }
     }

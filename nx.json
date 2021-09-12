@@ -18,26 +18,34 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ]
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
       }
     }
   },
   "projects": {
+    "mlask-api": {
+      "tags": []
+    },
     "mlask-client": {
       "tags": []
     },
     "mlask-client-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "mlask-client"
-      ]
+      "implicitDependencies": ["mlask-client"]
     },
-    "mlask-api": {
+    "shared/loader": {
+      "tags": []
+    },
+    "todo/api": {
+      "tags": []
+    },
+    "todo/feature": {
+      "tags": []
+    },
+    "todo/models": {
+      "tags": []
+    },
+    "todo/state": {
       "tags": []
     },
     "ui": {
@@ -48,21 +56,14 @@
     },
     "utils/nest": {
       "tags": []
-    },
-    "todo/models": {
-      "tags": []
-    },
-    "todo/state": {
-      "tags": []
-    },
-    "todo/api": {
-      "tags": []
-    },
-    "todo/feature": {
-      "tags": []
-    },
-    "shared/loader": {
-      "tags": []
     }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
   }
 }
